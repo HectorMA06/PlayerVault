@@ -1,6 +1,7 @@
 package org.playervault.app;
 
-import util.DatabaseConnection;
+
+import org.playervault.util.DatabaseConnection;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -9,7 +10,7 @@ import java.sql.SQLException;
  * Hello world!
  *
  */
-public class App 
+public class App
 {
     public static void main( String[] args )
     {
