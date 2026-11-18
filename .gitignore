@@ -37,4 +37,5 @@ build/
 
 ### Mac OS ###
 .DS_Store
-.properties
+# Configuración de MySQL
+database-config.properties

@@ -1,4 +1,4 @@
-package org.playervault;
+package org.playervault.app;
 
 /**
  * Hello world!
