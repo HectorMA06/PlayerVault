@@ -9,9 +9,9 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
 
-public class DatabaseConecction {
+public class DatabaseConnection {
 
-    public Connection conecction () throws SQLException {
+    public Connection connection () throws SQLException {
         Properties p = new Properties();
 
         String url;
