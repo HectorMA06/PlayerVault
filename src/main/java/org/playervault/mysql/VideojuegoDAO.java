@@ -86,4 +86,36 @@ public class VideojuegoDAO {
 
         return videojuegos;
     }
+
+    /**
+     * Método para buscar un videojuego de la base de datos por el id
+     * @param id
+     */
+    public void buscarPorId(int id){
+        DatabaseConnection databaseConnection = new DatabaseConnection();
+        String sql = "SELECT * FROM videojuego WHERE id = ?";
+        try (Connection connection = databaseConnection.connection()){
+            PreparedStatement ps = connection.prepareStatement(sql);
+
+            ps.setInt(1,id);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()){
+                System.out.println(
+                        "ID: " + rs.getInt("id") +
+                                " | Título: " + rs.getString("titulo") +
+                                " | Género: " + rs.getString("genero") +
+                                " | Plataforma: " + rs.getString("plataforma") +
+                                " | Estado: " + rs.getString("estado") +
+                                " | Puntuación: " + rs.getDouble("puntuacion") +
+                                " | Horas jugadas: " + rs.getDouble("horas_jugadas") +
+                                " | Año de lanzamiento: " + rs.getInt("fecha_lanzamiento")
+                );
+            } else{
+                System.out.println("No hay ningún título con esa ID");
+            }
+        } catch (SQLException e) {
+            System.err.println("Error SQL: " + e.getMessage());
+        }
+    }
+
 }

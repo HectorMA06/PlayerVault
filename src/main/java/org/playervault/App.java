@@ -10,10 +10,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Hello world!
- *
- */
+
 public class App {
     public static void main(String[] args) {
         DatabaseConnection databaseConnection = new DatabaseConnection();
@@ -21,7 +18,7 @@ public class App {
         //DATOS DE PRUEBA
         List<Videojuego> videojuegos = new ArrayList<>();
         try (Connection connection = databaseConnection.connection()) {
-            videojuegos = videojuegoDAO.listarTodos();
+            videojuegoDAO.buscarPorId(10);
 
         } catch (SQLException e) {
             System.out.println("Error SQL: " + e.getMessage());
