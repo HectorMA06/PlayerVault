@@ -9,8 +9,19 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
 
+/**
+ * Es la clase para conectarse a la base de datos.
+ *
+ * @author HectorMA06
+ * @version 1.0
+ */
 public class DatabaseConnection {
 
+    /**
+     * Función para conectarse a la base de datos
+     * @return devuelve la conexión a la base de datos
+     * @throws SQLException lanza una excepción sql si falla al conectarse a la base de datos
+     */
     public Connection connection () throws SQLException {
         Properties p = new Properties();
 

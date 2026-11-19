@@ -8,13 +8,21 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.time.format.DateTimeFormatter;
 import java.util.InputMismatchException;
-import java.util.Scanner;
 
+/**
+ * Representa un videojuego almacenado en la base de datos.
+ *
+ * @author HectorMA06
+ * @version 1.0
+ */
 public class VideojuegoDAO {
 
+    /**
+     * Inserta un videojuego a la base de datos
+     * @param videojuego objeto del videojuego que quieres meter a la base de datos
+     */
     public void insertar(Videojuego videojuego) {
 
-        Scanner sc = new Scanner(System.in);
         DatabaseConnection databaseConnection = new DatabaseConnection();
         String insertar = "INSERT INTO videojuego (titulo, genero, plataforma, estado, puntuacion, horas_jugadas, fecha_lanzamiento) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
