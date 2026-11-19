@@ -18,7 +18,7 @@ public class App {
         //DATOS DE PRUEBA
         List<Videojuego> videojuegos = new ArrayList<>();
         try (Connection connection = databaseConnection.connection()) {
-            videojuegoDAO.buscarPorId(10);
+            videojuegoDAO.listarTodos();
 
         } catch (SQLException e) {
             System.out.println("Error SQL: " + e.getMessage());

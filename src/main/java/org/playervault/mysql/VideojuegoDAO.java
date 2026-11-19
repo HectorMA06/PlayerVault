@@ -89,17 +89,18 @@ public class VideojuegoDAO {
 
     /**
      * Método para buscar un videojuego de la base de datos por el id
+     *
      * @param id
      */
-    public void buscarPorId(int id){
+    public void buscarPorId(int id) {
         DatabaseConnection databaseConnection = new DatabaseConnection();
         String sql = "SELECT * FROM videojuego WHERE id = ?";
-        try (Connection connection = databaseConnection.connection()){
+        try (Connection connection = databaseConnection.connection()) {
             PreparedStatement ps = connection.prepareStatement(sql);
 
-            ps.setInt(1,id);
+            ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
-            if (rs.next()){
+            if (rs.next()) {
                 System.out.println(
                         "ID: " + rs.getInt("id") +
                                 " | Título: " + rs.getString("titulo") +
@@ -110,9 +111,37 @@ public class VideojuegoDAO {
                                 " | Horas jugadas: " + rs.getDouble("horas_jugadas") +
                                 " | Año de lanzamiento: " + rs.getInt("fecha_lanzamiento")
                 );
-            } else{
+            } else {
                 System.out.println("No hay ningún título con esa ID");
             }
+        } catch (SQLException e) {
+            System.err.println("Error SQL: " + e.getMessage());
+        }
+    }
+
+    /**
+     * Función para eliminar un videojuego por la id
+     *
+     * @param id id del videojuego que quieres borrar
+     */
+    public void borrarPorId(int id) {
+        DatabaseConnection databaseConnection = new DatabaseConnection();
+        String sql = "DELETE FROM videojuego WHERE id = ?";
+
+        try (Connection connection = databaseConnection.connection()) {
+
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setInt(1, id);
+
+            int filasAfectadas = ps.executeUpdate();
+
+            if (filasAfectadas == 0) {
+                System.out.println("No existe ningún videojuego con ese ID");
+            } else {
+                System.out.println("Se ha borrado " + filasAfectadas + " filas");
+            }
+
+
         } catch (SQLException e) {
             System.err.println("Error SQL: " + e.getMessage());
         }
