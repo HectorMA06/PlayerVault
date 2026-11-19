@@ -1,13 +1,17 @@
 package org.playervault.mysql;
 
+import org.playervault.model.Estado;
 import org.playervault.model.Videojuego;
 import org.playervault.util.DatabaseConnection;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.Year;
 import java.time.format.DateTimeFormatter;
-import java.util.InputMismatchException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Representa un videojuego almacenado en la base de datos.
@@ -19,6 +23,7 @@ public class VideojuegoDAO {
 
     /**
      * Inserta un videojuego a la base de datos
+     *
      * @param videojuego objeto del videojuego que quieres meter a la base de datos
      */
     public void insertar(Videojuego videojuego) {
@@ -30,13 +35,13 @@ public class VideojuegoDAO {
 
             PreparedStatement ps = connection.prepareStatement(insertar);
 
-            ps.setString(1,videojuego.getTitulo());
-            ps.setString(2,videojuego.getGenero());
-            ps.setString(3,videojuego.getPlataforma());
-            ps.setString(4,videojuego.getEstado().name());
-            ps.setDouble(5,videojuego.getPuntuacion());
-            ps.setDouble(6,videojuego.getHoras_jugadas());
-            ps.setString(7,videojuego.getFecha_lanzamiento().format(DateTimeFormatter.ofPattern("yyyy")));
+            ps.setString(1, videojuego.getTitulo());
+            ps.setString(2, videojuego.getGenero());
+            ps.setString(3, videojuego.getPlataforma());
+            ps.setString(4, videojuego.getEstado().name());
+            ps.setDouble(5, videojuego.getPuntuacion());
+            ps.setDouble(6, videojuego.getHoras_jugadas());
+            ps.setString(7, videojuego.getFecha_lanzamiento().format(DateTimeFormatter.ofPattern("yyyy")));
 
             int filas = ps.executeUpdate();
 
@@ -44,9 +49,41 @@ public class VideojuegoDAO {
 
         } catch (SQLException e) {
             System.err.println("Error SQL: " + e.getMessage());
-        } catch (InputMismatchException i){
-            System.err.println("Introduce el tipo de dato correcto.");
-            System.out.println("Información del error: " + i.getMessage());
         }
+    }
+
+    /**
+     * Función para listar todos los videojuegos por terminal de la base de datos
+     * y los guarda en una lista de objetos tipo videojuego
+     *
+     * @return devuelve una lista de objetos de tipo videojuego
+     */
+    public List<Videojuego> listarTodos() {
+        DatabaseConnection databaseConnection = new DatabaseConnection();
+        String sql = "SELECT * FROM videojuego";
+        List<Videojuego> videojuegos = new ArrayList<>();
+        try (Connection connection = databaseConnection.connection()) {
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Videojuego v = new Videojuego(
+                        rs.getInt("id"),
+                        rs.getString("titulo"),
+                        rs.getString("genero"),
+                        rs.getString("plataforma"),
+                        Estado.valueOf(rs.getString("estado")),
+                        rs.getDouble("puntuacion"),
+                        rs.getDouble("horas_jugadas"),
+                        Year.of(rs.getInt("fecha_lanzamiento"))
+                );
+                System.out.println(v);
+                videojuegos.add(v);
+            }
+        } catch (SQLException e) {
+            System.err.println("Error SQL: " + e.getMessage());
+        }
+
+        return videojuegos;
     }
 }

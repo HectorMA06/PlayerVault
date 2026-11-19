@@ -19,17 +19,18 @@ public class DatabaseConnection {
 
     /**
      * Función para conectarse a la base de datos
+     *
      * @return devuelve la conexión a la base de datos
      * @throws SQLException lanza una excepción sql si falla al conectarse a la base de datos
      */
-    public Connection connection () throws SQLException {
+    public Connection connection() throws SQLException {
         Properties p = new Properties();
 
         String url;
         String user;
         String password;
 
-        try (BufferedReader bw = Files.newBufferedReader(Path.of("database-config.properties"))){
+        try (BufferedReader bw = Files.newBufferedReader(Path.of("database-config.properties"))) {
             p.load(bw);
         } catch (IOException e) {
             System.out.println("Error al cargar el archivo");
@@ -39,7 +40,7 @@ public class DatabaseConnection {
         user = p.getProperty("db.user");
         password = p.getProperty("db.password");
 
-        return DriverManager.getConnection(url,user,password);
+        return DriverManager.getConnection(url, user, password);
 
     }
 }

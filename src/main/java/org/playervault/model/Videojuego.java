@@ -21,6 +21,7 @@ public class Videojuego {
     /**
      * Crea un videojuego.
      *
+     * @param id                Id del videojuego
      * @param titulo            Nombre del videojuego.
      * @param genero            Género del videojuego.
      * @param plataforma        Plataforma del videojuego
@@ -30,7 +31,8 @@ public class Videojuego {
      * @param fecha_lanzamiento año de lanzamiento del videojuego
      */
 
-    public Videojuego(String titulo, String genero, String plataforma, Estado estado, double puntuacion, double horas_jugadas, Year fecha_lanzamiento) {
+    public Videojuego(int id, String titulo, String genero, String plataforma, Estado estado, double puntuacion, double horas_jugadas, Year fecha_lanzamiento) {
+        this.id = id;
         this.titulo = titulo;
         this.genero = genero;
         this.plataforma = plataforma;
@@ -98,6 +100,7 @@ public class Videojuego {
 
     /**
      * Cambia la plataforma del videojuego
+     *
      * @param plataforma plataforma del videojuego
      */
     public void setPlataforma(String plataforma) {
@@ -115,6 +118,7 @@ public class Videojuego {
 
     /**
      * Cambia el estado del videojuego
+     *
      * @param estado Estado del videojuego
      */
 
@@ -133,6 +137,7 @@ public class Videojuego {
 
     /**
      * Cambia la puntuación del videojuego
+     *
      * @param puntuacion Puntuación del videojuego
      */
     public void setPuntuacion(double puntuacion) {
@@ -150,6 +155,7 @@ public class Videojuego {
 
     /**
      * Modifica las horas jugadas al videojuego
+     *
      * @param horas_jugadas horas jugadas al videojuego
      */
     public void setHoras_jugadas(double horas_jugadas) {
@@ -167,6 +173,7 @@ public class Videojuego {
 
     /**
      * Modifica la fecha de lanzamiento del videojuego
+     *
      * @param fecha_lanzamiento fecha de lanzamiento del videojuego
      */
     public void setFecha_lanzamiento(Year fecha_lanzamiento) {
