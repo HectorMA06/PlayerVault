@@ -158,6 +158,12 @@ public class VideojuegoDAO {
         }
     }
 
+
+    /**
+     * Función para actualizar un objeto videojuego por su id
+     * @param videojuego
+     * @return devuelve verdadero o falso para mostrar si se actualizó
+     */
     public boolean actualizarPorId(Videojuego videojuego){
         DatabaseConnection databaseConnection = new DatabaseConnection();
         String sql = "UPDATE videojuego SET " +
