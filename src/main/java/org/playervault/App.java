@@ -39,6 +39,10 @@ public class App {
                         videojuegoDAO.buscarPorId(1);
                         break;
                     case 4:
+                        Videojuego videojuego = videojuegoDAO.buscarPorId(1);
+                        videojuego.setFecha_lanzamiento(null);
+                        videojuegoDAO.actualizarPorId(videojuego);
+                        videojuegoDAO.buscarPorId(1);
 
                         break;
                     case 5:

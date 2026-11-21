@@ -4,10 +4,7 @@ import org.playervault.model.Estado;
 import org.playervault.model.Videojuego;
 import org.playervault.util.DatabaseConnection;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.time.Year;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -92,31 +89,45 @@ public class VideojuegoDAO {
      *
      * @param id
      */
-    public void buscarPorId(int id) {
+    public Videojuego buscarPorId(int id) {
         DatabaseConnection databaseConnection = new DatabaseConnection();
         String sql = "SELECT * FROM videojuego WHERE id = ?";
-        try (Connection connection = databaseConnection.connection()) {
-            PreparedStatement ps = connection.prepareStatement(sql);
+        try (Connection connection = databaseConnection.connection();
+             PreparedStatement ps = connection.prepareStatement(sql);) {
+
 
             ps.setInt(1, id);
-            ResultSet rs = ps.executeQuery();
-            if (rs.next()) {
-                System.out.println(
-                        "ID: " + rs.getInt("id") +
-                                " | Título: " + rs.getString("titulo") +
-                                " | Género: " + rs.getString("genero") +
-                                " | Plataforma: " + rs.getString("plataforma") +
-                                " | Estado: " + rs.getString("estado") +
-                                " | Puntuación: " + rs.getDouble("puntuacion") +
-                                " | Horas jugadas: " + rs.getDouble("horas_jugadas") +
-                                " | Año de lanzamiento: " + rs.getInt("fecha_lanzamiento")
-                );
-            } else {
-                System.out.println("No hay ningún título con esa ID");
+
+            try (ResultSet rs = ps.executeQuery();){
+                if (rs.next()) {
+                    int anio = rs.getInt("fecha_lanzamiento");
+                    Year fecha = rs.wasNull() ? null : Year.of(anio);
+
+                    Videojuego videojuego = new Videojuego(
+                            rs.getString("titulo"),
+                            rs.getString("genero"),
+                            rs.getString("plataforma"),
+                            Estado.valueOf(rs.getString("estado")),
+                            rs.getDouble("puntuacion"),
+                            rs.getDouble("horas_jugadas"),
+                            fecha
+                    );
+
+                    videojuego.setId(rs.getInt("id"));
+
+                    System.out.println(videojuego);
+
+                    return videojuego;
+                }
+                System.out.println("No hay ningún título con ese ID");
             }
+
+
         } catch (SQLException e) {
             System.err.println("Error SQL: " + e.getMessage());
+
         }
+        return null;
     }
 
     /**
@@ -145,6 +156,43 @@ public class VideojuegoDAO {
         } catch (SQLException e) {
             System.err.println("Error SQL: " + e.getMessage());
         }
+    }
+
+    public boolean actualizarPorId(Videojuego videojuego){
+        DatabaseConnection databaseConnection = new DatabaseConnection();
+        String sql = "UPDATE videojuego SET " +
+                "titulo = ?, " +
+                "genero = ?, " +
+                "plataforma = ?, " +
+                "estado = ?, " +
+                "puntuacion = ?, " +
+                "horas_jugadas = ?, " +
+                "fecha_lanzamiento = ? " +
+                "WHERE id = ?";
+
+        try (Connection connection = databaseConnection.connection()){
+            PreparedStatement ps = connection.prepareStatement(sql);
+
+            ps.setString(1, videojuego.getTitulo());
+            ps.setString(2, videojuego.getGenero());
+            ps.setString(3, videojuego.getPlataforma());
+            ps.setString(4, videojuego.getEstado().name());
+            ps.setDouble(5, videojuego.getPuntuacion());
+            ps.setDouble(6, videojuego.getHoras_jugadas());
+
+            if (videojuego.getFecha_lanzamiento() != null) ps.setInt(7, videojuego.getFecha_lanzamiento().getValue());
+            else ps.setNull(7, Types.SMALLINT);
+
+            ps.setInt(8, videojuego.getId());
+
+            int filasActualizadas = ps.executeUpdate();
+
+            return filasActualizadas > 0;
+        } catch (SQLException e) {
+            System.out.println("Error SQL: " + e.getMessage());
+            return false;
+        }
+
     }
 
 }

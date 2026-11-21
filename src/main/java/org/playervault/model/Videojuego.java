@@ -42,6 +42,30 @@ public class Videojuego {
         this.fecha_lanzamiento = fecha_lanzamiento;
     }
 
+
+
+    /**
+     * Crea un videojuego sin id.
+     *
+     *
+     * @param titulo            Nombre del videojuego.
+     * @param genero            Género del videojuego.
+     * @param plataforma        Plataforma del videojuego
+     * @param estado            estado del videojuego
+     * @param puntuacion        puntuación del videojuego
+     * @param horas_jugadas     horas jugadas al videojuego
+     * @param fecha_lanzamiento año de lanzamiento del videojuego
+     */
+    public Videojuego(String titulo, String genero, String plataforma, Estado estado, double puntuacion, double horas_jugadas, Year fecha_lanzamiento) {
+        this.titulo = titulo;
+        this.genero = genero;
+        this.plataforma = plataforma;
+        this.estado = estado;
+        this.puntuacion = puntuacion;
+        this.horas_jugadas = horas_jugadas;
+        this.fecha_lanzamiento = fecha_lanzamiento;
+    }
+
     /**
      * Devuelve la ID del videojuego
      *
@@ -49,6 +73,16 @@ public class Videojuego {
      */
     public int getId() {
         return id;
+    }
+
+
+    /**
+     * Cambia el id del videojuego
+     *
+     * @param id id del videojuego
+     */
+    public void setId(int id) {
+        this.id = id;
     }
 
     /**
