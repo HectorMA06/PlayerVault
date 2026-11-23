@@ -21,7 +21,7 @@ public class DatabaseConnection {
      * Función para conectarse a la base de datos
      *
      * @return devuelve la conexión a la base de datos
-     * @throws SQLException lanza una excepción sql si falla al conectarse a la base de datos
+     * @throws SQLException si no se puede leer el archivo de configuración o falla la conexión a la base de datos
      */
     public Connection connection() throws SQLException {
         Properties p = new Properties();
@@ -33,7 +33,7 @@ public class DatabaseConnection {
         try (BufferedReader bw = Files.newBufferedReader(Path.of("database-config.properties"))) {
             p.load(bw);
         } catch (IOException e) {
-            System.out.println("Error al cargar el archivo");
+            throw new SQLException("No se pudo cargar database-config.properties: " + e.getMessage(), e);
         }
 
         url = p.getProperty("db.url");
