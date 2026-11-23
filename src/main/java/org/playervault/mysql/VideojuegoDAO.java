@@ -10,7 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Representa un videojuego almacenado en la base de datos.
+ * Clase de acceso a datos (DAO) para la tabla videojuego.
+ * Contiene las operaciones CRUD: insertar, listar, buscar, actualizar y borrar.
  *
  * @author HectorMA06
  * @version 1.0
@@ -27,9 +28,8 @@ public class VideojuegoDAO {
         DatabaseConnection databaseConnection = new DatabaseConnection();
         String insertar = "INSERT INTO videojuego (titulo, genero, plataforma, estado, puntuacion, horas_jugadas, fecha_lanzamiento) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
-        try (Connection connection = databaseConnection.connection()) {
-
-            PreparedStatement ps = connection.prepareStatement(insertar);
+        try (Connection connection = databaseConnection.connection();
+             PreparedStatement ps = connection.prepareStatement(insertar)) {
 
             ps.setString(1, videojuego.getTitulo());
             ps.setString(2, videojuego.getGenero());
@@ -60,9 +60,9 @@ public class VideojuegoDAO {
         DatabaseConnection databaseConnection = new DatabaseConnection();
         String sql = "SELECT * FROM videojuego";
         List<Videojuego> videojuegos = new ArrayList<>();
-        try (Connection connection = databaseConnection.connection()) {
-            PreparedStatement ps = connection.prepareStatement(sql);
-            ResultSet rs = ps.executeQuery();
+        try (Connection connection = databaseConnection.connection();
+             PreparedStatement ps = connection.prepareStatement(sql);
+             ResultSet rs = ps.executeQuery()) {
 
             while (rs.next()) {
                 int anio = rs.getInt("fecha_lanzamiento");
@@ -94,7 +94,8 @@ public class VideojuegoDAO {
     /**
      * Método para buscar un videojuego de la base de datos por el id
      *
-     * @param id
+     * @param id id del videojuego que quieres buscar
+     * @return el videojuego encontrado, o null si no existe
      */
     public Videojuego buscarPorId(int id) {
         DatabaseConnection databaseConnection = new DatabaseConnection();
@@ -149,9 +150,9 @@ public class VideojuegoDAO {
         DatabaseConnection databaseConnection = new DatabaseConnection();
         String sql = "DELETE FROM videojuego WHERE id = ?";
 
-        try (Connection connection = databaseConnection.connection()) {
+        try (Connection connection = databaseConnection.connection();
+             PreparedStatement ps = connection.prepareStatement(sql)) {
 
-            PreparedStatement ps = connection.prepareStatement(sql);
             ps.setInt(1, id);
 
             int filasAfectadas = ps.executeUpdate();
@@ -171,7 +172,7 @@ public class VideojuegoDAO {
 
     /**
      * Función para actualizar un objeto videojuego por su id
-     * @param videojuego
+     * @param videojuego videojuego con los datos nuevos (se usa su id para saber cuál actualizar)
      * @return devuelve verdadero o falso para mostrar si se actualizó
      */
     public boolean actualizarPorId(Videojuego videojuego){
@@ -186,8 +187,8 @@ public class VideojuegoDAO {
                 "fecha_lanzamiento = ? " +
                 "WHERE id = ?";
 
-        try (Connection connection = databaseConnection.connection()){
-            PreparedStatement ps = connection.prepareStatement(sql);
+        try (Connection connection = databaseConnection.connection();
+             PreparedStatement ps = connection.prepareStatement(sql)) {
 
             ps.setString(1, videojuego.getTitulo());
             ps.setString(2, videojuego.getGenero());
@@ -206,7 +207,7 @@ public class VideojuegoDAO {
 
             return filasActualizadas > 0;
         } catch (SQLException e) {
-            System.out.println("Error SQL: " + e.getMessage());
+            System.err.println("Error SQL: " + e.getMessage());
             return false;
         }
 
