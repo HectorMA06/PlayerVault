@@ -6,7 +6,6 @@ import org.playervault.util.DatabaseConnection;
 
 import java.sql.*;
 import java.time.Year;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,7 +37,8 @@ public class VideojuegoDAO {
             ps.setString(4, videojuego.getEstado().name());
             ps.setDouble(5, videojuego.getPuntuacion());
             ps.setDouble(6, videojuego.getHoras_jugadas());
-            ps.setString(7, videojuego.getFecha_lanzamiento().format(DateTimeFormatter.ofPattern("yyyy")));
+            if (videojuego.getFecha_lanzamiento() != null) ps.setInt(7, videojuego.getFecha_lanzamiento().getValue());
+            else ps.setNull(7, Types.SMALLINT);
 
             int filas = ps.executeUpdate();
 
