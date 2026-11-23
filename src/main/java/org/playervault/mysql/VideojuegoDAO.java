@@ -64,6 +64,9 @@ public class VideojuegoDAO {
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
+                int anio = rs.getInt("fecha_lanzamiento");
+                Year fecha = rs.wasNull() ? null : Year.of(anio);
+
                 Videojuego v = new Videojuego(
                         rs.getInt("id"),
                         rs.getString("titulo"),
@@ -72,7 +75,7 @@ public class VideojuegoDAO {
                         Estado.valueOf(rs.getString("estado")),
                         rs.getDouble("puntuacion"),
                         rs.getDouble("horas_jugadas"),
-                        Year.of(rs.getInt("fecha_lanzamiento"))
+                        fecha
                 );
                 System.out.println(v);
                 videojuegos.add(v);
