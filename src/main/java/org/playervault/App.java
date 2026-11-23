@@ -1,6 +1,7 @@
 package org.playervault;
 
 
+import org.playervault.model.Estado;
 import org.playervault.model.Videojuego;
 import org.playervault.mysql.VideojuegoDAO;
 import org.playervault.util.DatabaseConnection;
@@ -8,6 +9,7 @@ import org.playervault.util.Menu;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.time.Year;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
@@ -30,7 +32,12 @@ public class App {
 
                 switch (opcion) {
                     case 1:
-                        videojuegoDAO.insertar(null);
+                        //Insertar un juego con la puntuación en null para que se meta null en la bd
+                        Videojuego nuevo = new Videojuego(
+                                "Hollow Knight", "Metroidvania", "PC",
+                                Estado.PENDIENTE, null, 0, Year.of(2017)
+                        );
+                        videojuegoDAO.insertar(nuevo);
                         break;
                     case 2:
                         videojuegos = videojuegoDAO.listarTodos();
@@ -40,10 +47,13 @@ public class App {
                         break;
                     case 4:
                         Videojuego videojuego = videojuegoDAO.buscarPorId(1);
-                        videojuego.setFecha_lanzamiento(null);
-                        videojuegoDAO.actualizarPorId(videojuego);
-                        videojuegoDAO.buscarPorId(1);
+                        //Introduce el videojuego si o si
+                        if (videojuego == null) break;
 
+                        videojuego.setFecha_lanzamiento(null);
+                        boolean actualizado = videojuegoDAO.actualizarPorId(videojuego);
+                        System.out.println(actualizado ? "Videojuego actualizado" : "No se pudo actualizar el videojuego");
+                        videojuegoDAO.buscarPorId(1);
                         break;
                     case 5:
                         videojuegoDAO.borrarPorId(2);
