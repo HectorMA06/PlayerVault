@@ -4,11 +4,8 @@ package org.playervault;
 import org.playervault.model.Estado;
 import org.playervault.model.Videojuego;
 import org.playervault.mysql.VideojuegoDAO;
-import org.playervault.util.DatabaseConnection;
 import org.playervault.util.Menu;
 
-import java.sql.Connection;
-import java.sql.SQLException;
 import java.time.Year;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
@@ -18,7 +15,6 @@ import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) {
-        DatabaseConnection databaseConnection = new DatabaseConnection();
         VideojuegoDAO videojuegoDAO = new VideojuegoDAO();
         List<Videojuego> videojuegos = new ArrayList<>();
         Menu menu = new Menu();
@@ -75,6 +71,8 @@ public class App {
 
 
         }
+
+        sc.close();
 
 
     }
