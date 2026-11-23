@@ -14,7 +14,7 @@ public class Videojuego {
     private String genero;
     private String plataforma;
     private Estado estado;
-    private double puntuacion;
+    private Double puntuacion;
     private double horas_jugadas;
     private Year fecha_lanzamiento;
 
@@ -31,7 +31,7 @@ public class Videojuego {
      * @param fecha_lanzamiento año de lanzamiento del videojuego
      */
 
-    public Videojuego(int id, String titulo, String genero, String plataforma, Estado estado, double puntuacion, double horas_jugadas, Year fecha_lanzamiento) {
+    public Videojuego(int id, String titulo, String genero, String plataforma, Estado estado, Double puntuacion, double horas_jugadas, Year fecha_lanzamiento) {
         this.id = id;
         this.titulo = titulo;
         this.genero = genero;
@@ -56,7 +56,7 @@ public class Videojuego {
      * @param horas_jugadas     horas jugadas al videojuego
      * @param fecha_lanzamiento año de lanzamiento del videojuego
      */
-    public Videojuego(String titulo, String genero, String plataforma, Estado estado, double puntuacion, double horas_jugadas, Year fecha_lanzamiento) {
+    public Videojuego(String titulo, String genero, String plataforma, Estado estado, Double puntuacion, double horas_jugadas, Year fecha_lanzamiento) {
         this.titulo = titulo;
         this.genero = genero;
         this.plataforma = plataforma;
@@ -165,7 +165,7 @@ public class Videojuego {
      *
      * @return Puntuación del videojuego
      */
-    public double getPuntuacion() {
+    public Double getPuntuacion() {
         return puntuacion;
     }
 
@@ -174,7 +174,7 @@ public class Videojuego {
      *
      * @param puntuacion Puntuación del videojuego
      */
-    public void setPuntuacion(double puntuacion) {
+    public void setPuntuacion(Double puntuacion) {
         this.puntuacion = puntuacion;
     }
 

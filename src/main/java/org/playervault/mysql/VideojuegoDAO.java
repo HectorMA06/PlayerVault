@@ -35,7 +35,8 @@ public class VideojuegoDAO {
             ps.setString(2, videojuego.getGenero());
             ps.setString(3, videojuego.getPlataforma());
             ps.setString(4, videojuego.getEstado().name());
-            ps.setDouble(5, videojuego.getPuntuacion());
+            if (videojuego.getPuntuacion() != null) ps.setDouble(5, videojuego.getPuntuacion());
+            else ps.setNull(5, Types.DECIMAL);
             ps.setDouble(6, videojuego.getHoras_jugadas());
             if (videojuego.getFecha_lanzamiento() != null) ps.setInt(7, videojuego.getFecha_lanzamiento().getValue());
             else ps.setNull(7, Types.SMALLINT);
@@ -67,13 +68,16 @@ public class VideojuegoDAO {
                 int anio = rs.getInt("fecha_lanzamiento");
                 Year fecha = rs.wasNull() ? null : Year.of(anio);
 
+                double nota = rs.getDouble("puntuacion");
+                Double puntuacion = rs.wasNull() ? null : nota;
+
                 Videojuego v = new Videojuego(
                         rs.getInt("id"),
                         rs.getString("titulo"),
                         rs.getString("genero"),
                         rs.getString("plataforma"),
                         Estado.valueOf(rs.getString("estado")),
-                        rs.getDouble("puntuacion"),
+                        puntuacion,
                         rs.getDouble("horas_jugadas"),
                         fecha
                 );
@@ -106,12 +110,15 @@ public class VideojuegoDAO {
                     int anio = rs.getInt("fecha_lanzamiento");
                     Year fecha = rs.wasNull() ? null : Year.of(anio);
 
+                    double nota = rs.getDouble("puntuacion");
+                    Double puntuacion = rs.wasNull() ? null : nota;
+
                     Videojuego videojuego = new Videojuego(
                             rs.getString("titulo"),
                             rs.getString("genero"),
                             rs.getString("plataforma"),
                             Estado.valueOf(rs.getString("estado")),
-                            rs.getDouble("puntuacion"),
+                            puntuacion,
                             rs.getDouble("horas_jugadas"),
                             fecha
                     );
@@ -186,7 +193,8 @@ public class VideojuegoDAO {
             ps.setString(2, videojuego.getGenero());
             ps.setString(3, videojuego.getPlataforma());
             ps.setString(4, videojuego.getEstado().name());
-            ps.setDouble(5, videojuego.getPuntuacion());
+            if (videojuego.getPuntuacion() != null) ps.setDouble(5, videojuego.getPuntuacion());
+            else ps.setNull(5, Types.DECIMAL);
             ps.setDouble(6, videojuego.getHoras_jugadas());
 
             if (videojuego.getFecha_lanzamiento() != null) ps.setInt(7, videojuego.getFecha_lanzamiento().getValue());
