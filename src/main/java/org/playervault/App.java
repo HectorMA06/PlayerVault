@@ -46,7 +46,7 @@ public class App {
                         //Introduce el videojuego si o si
                         if (videojuego == null) break;
 
-                        videojuego.setFecha_lanzamiento(null);
+                        videojuego.setFechaLanzamiento(null);
                         boolean actualizado = videojuegoDAO.actualizarPorId(videojuego);
                         System.out.println(actualizado ? "Videojuego actualizado" : "No se pudo actualizar el videojuego");
                         videojuegoDAO.buscarPorId(1);

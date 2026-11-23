@@ -37,8 +37,8 @@ public class VideojuegoDAO {
             ps.setString(4, videojuego.getEstado().name());
             if (videojuego.getPuntuacion() != null) ps.setDouble(5, videojuego.getPuntuacion());
             else ps.setNull(5, Types.DECIMAL);
-            ps.setDouble(6, videojuego.getHoras_jugadas());
-            if (videojuego.getFecha_lanzamiento() != null) ps.setInt(7, videojuego.getFecha_lanzamiento().getValue());
+            ps.setDouble(6, videojuego.getHorasJugadas());
+            if (videojuego.getFechaLanzamiento() != null) ps.setInt(7, videojuego.getFechaLanzamiento().getValue());
             else ps.setNull(7, Types.SMALLINT);
 
             int filas = ps.executeUpdate();
@@ -196,9 +196,9 @@ public class VideojuegoDAO {
             ps.setString(4, videojuego.getEstado().name());
             if (videojuego.getPuntuacion() != null) ps.setDouble(5, videojuego.getPuntuacion());
             else ps.setNull(5, Types.DECIMAL);
-            ps.setDouble(6, videojuego.getHoras_jugadas());
+            ps.setDouble(6, videojuego.getHorasJugadas());
 
-            if (videojuego.getFecha_lanzamiento() != null) ps.setInt(7, videojuego.getFecha_lanzamiento().getValue());
+            if (videojuego.getFechaLanzamiento() != null) ps.setInt(7, videojuego.getFechaLanzamiento().getValue());
             else ps.setNull(7, Types.SMALLINT);
 
             ps.setInt(8, videojuego.getId());

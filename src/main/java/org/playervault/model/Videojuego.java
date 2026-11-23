@@ -15,8 +15,8 @@ public class Videojuego {
     private String plataforma;
     private Estado estado;
     private Double puntuacion;
-    private double horas_jugadas;
-    private Year fecha_lanzamiento;
+    private double horasJugadas;
+    private Year fechaLanzamiento;
 
     /**
      * Crea un videojuego.
@@ -27,19 +27,19 @@ public class Videojuego {
      * @param plataforma        Plataforma del videojuego
      * @param estado            estado del videojuego
      * @param puntuacion        puntuación del videojuego
-     * @param horas_jugadas     horas jugadas al videojuego
-     * @param fecha_lanzamiento año de lanzamiento del videojuego
+     * @param horasJugadas     horas jugadas al videojuego
+     * @param fechaLanzamiento año de lanzamiento del videojuego
      */
 
-    public Videojuego(int id, String titulo, String genero, String plataforma, Estado estado, Double puntuacion, double horas_jugadas, Year fecha_lanzamiento) {
+    public Videojuego(int id, String titulo, String genero, String plataforma, Estado estado, Double puntuacion, double horasJugadas, Year fechaLanzamiento) {
         this.id = id;
         this.titulo = titulo;
         this.genero = genero;
         this.plataforma = plataforma;
         this.estado = estado;
         this.puntuacion = puntuacion;
-        this.horas_jugadas = horas_jugadas;
-        this.fecha_lanzamiento = fecha_lanzamiento;
+        this.horasJugadas = horasJugadas;
+        this.fechaLanzamiento = fechaLanzamiento;
     }
 
 
@@ -53,17 +53,17 @@ public class Videojuego {
      * @param plataforma        Plataforma del videojuego
      * @param estado            estado del videojuego
      * @param puntuacion        puntuación del videojuego
-     * @param horas_jugadas     horas jugadas al videojuego
-     * @param fecha_lanzamiento año de lanzamiento del videojuego
+     * @param horasJugadas     horas jugadas al videojuego
+     * @param fechaLanzamiento año de lanzamiento del videojuego
      */
-    public Videojuego(String titulo, String genero, String plataforma, Estado estado, Double puntuacion, double horas_jugadas, Year fecha_lanzamiento) {
+    public Videojuego(String titulo, String genero, String plataforma, Estado estado, Double puntuacion, double horasJugadas, Year fechaLanzamiento) {
         this.titulo = titulo;
         this.genero = genero;
         this.plataforma = plataforma;
         this.estado = estado;
         this.puntuacion = puntuacion;
-        this.horas_jugadas = horas_jugadas;
-        this.fecha_lanzamiento = fecha_lanzamiento;
+        this.horasJugadas = horasJugadas;
+        this.fechaLanzamiento = fechaLanzamiento;
     }
 
     /**
@@ -183,17 +183,17 @@ public class Videojuego {
      *
      * @return Horas jugadas del videojuego
      */
-    public double getHoras_jugadas() {
-        return horas_jugadas;
+    public double getHorasJugadas() {
+        return horasJugadas;
     }
 
     /**
      * Modifica las horas jugadas al videojuego
      *
-     * @param horas_jugadas horas jugadas al videojuego
+     * @param horasJugadas horas jugadas al videojuego
      */
-    public void setHoras_jugadas(double horas_jugadas) {
-        this.horas_jugadas = horas_jugadas;
+    public void setHorasJugadas(double horasJugadas) {
+        this.horasJugadas = horasJugadas;
     }
 
     /**
@@ -201,17 +201,17 @@ public class Videojuego {
      *
      * @return año del videojuego
      */
-    public Year getFecha_lanzamiento() {
-        return fecha_lanzamiento;
+    public Year getFechaLanzamiento() {
+        return fechaLanzamiento;
     }
 
     /**
      * Modifica la fecha de lanzamiento del videojuego
      *
-     * @param fecha_lanzamiento fecha de lanzamiento del videojuego
+     * @param fechaLanzamiento fecha de lanzamiento del videojuego
      */
-    public void setFecha_lanzamiento(Year fecha_lanzamiento) {
-        this.fecha_lanzamiento = fecha_lanzamiento;
+    public void setFechaLanzamiento(Year fechaLanzamiento) {
+        this.fechaLanzamiento = fechaLanzamiento;
     }
 
     /**
@@ -228,8 +228,8 @@ public class Videojuego {
                 ", plataforma='" + plataforma + '\'' +
                 ", estado=" + estado +
                 ", puntuacion=" + puntuacion +
-                ", horas_jugadas=" + horas_jugadas +
-                ", fecha_lanzamiento=" + fecha_lanzamiento +
+                ", horasJugadas=" + horasJugadas +
+                ", fechaLanzamiento=" + fechaLanzamiento +
                 '}';
     }
 }
