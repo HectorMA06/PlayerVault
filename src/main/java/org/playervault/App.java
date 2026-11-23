@@ -60,6 +60,7 @@ public class App {
             } catch (InputMismatchException i) {
                 System.err.println("Introduce un tipo de dato correcto");
                 System.err.println("Info del mensaje: " + i.getMessage());
+                sc.nextLine();
             }
 
 
