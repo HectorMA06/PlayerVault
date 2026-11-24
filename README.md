@@ -63,19 +63,37 @@ El proyecto está en desarrollo.
 
 ## Estructura del repositorio
 
-Estructura actual:
+El repositorio contiene dos proyectos independientes, cada uno en su carpeta:
 
 ```
 PlayerVault/
-├── sql/
-│   └── database.sql          # Creación de la base de datos y datos de ejemplo
-├── src/main/java/org/playervault/
-│   ├── App.java              # Punto de entrada (menú de pruebas por consola)
-│   ├── model/                # Clases del modelo (Videojuego, Estado)
-│   ├── mysql/                # Acceso a datos (VideojuegoDAO)
-│   └── util/                 # Conexión a la base de datos y menú
-└── pom.xml
+├── backend/                          # API en Java (Maven)
+│   ├── sql/
+│   │   └── database.sql              # Creación de la base de datos y datos de ejemplo
+│   ├── src/main/java/org/playervault/
+│   │   ├── App.java                  # Punto de entrada (menú de pruebas por consola)
+│   │   ├── model/                    # Clases del modelo (Videojuego, Estado)
+│   │   ├── mysql/                    # Acceso a datos (VideojuegoDAO)
+│   │   └── util/                     # Conexión a la base de datos y menú
+│   └── pom.xml
+│
+└── android-app/                      # App Android (Kotlin + Jetpack Compose)
+    ├── app/src/main/
+    │   ├── java/com/playervault/app/
+    │   │   ├── MainActivity.kt       # Punto de entrada de la app
+    │   │   ├── PlayerVaultApp.kt     # Composable raíz (Scaffold)
+    │   │   ├── model/                # Clases del modelo (Videojuego, Estado)
+    │   │   ├── data/                 # Origen de los datos (VideojuegoRepository)
+    │   │   └── ui/
+    │   │       ├── screens/          # Una pantalla por archivo (ColeccionScreen)
+    │   │       ├── components/       # Componentes reutilizables (VideojuegoCard)
+    │   │       └── theme/            # Colores, tipografía y tema
+    │   └── res/                      # Recursos: textos, imágenes e iconos
+    ├── gradle/libs.versions.toml     # Versiones de las dependencias
+    └── build.gradle.kts
 ```
+
+Cada carpeta se abre como un proyecto aparte: `backend/` con IntelliJ IDEA y `android-app/` con Android Studio.
 
 ## Modelo de datos
 
@@ -105,7 +123,7 @@ Tabla `videojuego`:
 
 ```bash
 git clone https://github.com/HectorMA06/PlayerVault.git
-cd PlayerVault
+cd PlayerVault/backend
 ```
 
 ### 2. Levantar MySQL
@@ -125,7 +143,7 @@ Asegúrate de que el servidor de MySQL está en marcha y anota el puerto en el q
 
 ### 3. Crear la base de datos
 
-Ejecuta el script `sql/database.sql`, que crea la base de datos `playervault`, la tabla `videojuego` y algunos datos de ejemplo.
+Ejecuta el script `backend/sql/database.sql`, que crea la base de datos `playervault`, la tabla `videojuego` y algunos datos de ejemplo.
 
 Con Docker:
 
@@ -141,7 +159,7 @@ mysql -uroot -p < sql/database.sql
 
 ### 4. Configurar la conexión
 
-Crea un archivo `database-config.properties` en la raíz del proyecto con este contenido, ajustando el puerto, el usuario y la contraseña:
+Crea un archivo `database-config.properties` dentro de la carpeta `backend/` con este contenido, ajustando el puerto, el usuario y la contraseña:
 
 ```properties
 db.url=jdbc:mysql://127.0.0.1:3307/playervault
@@ -153,7 +171,7 @@ Este archivo está incluido en el `.gitignore` para que las credenciales no se s
 
 ### 5. Ejecutar
 
-Abre el proyecto en el IDE y ejecuta la clase `org.playervault.App`. Se mostrará un menú por consola para probar las operaciones del CRUD.
+Abre la carpeta `backend/` en el IDE y ejecuta la clase `org.playervault.App`. Se mostrará un menú por consola para probar las operaciones del CRUD.
 
 ## Autor
 
