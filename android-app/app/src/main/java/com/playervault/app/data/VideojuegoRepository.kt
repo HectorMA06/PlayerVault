@@ -15,7 +15,7 @@ object VideojuegoRepository{
             puntuacion = 9.6,
             horas_jugadas = 10.4,
             fecha_lanzamiento = 1998,
-            caratula = R.drawable.zelda_ocarina
+            caratula = R.drawable.ic_zelda_ocarina
         ),
         Videojuego(
             id = 2,
@@ -26,7 +26,7 @@ object VideojuegoRepository{
             puntuacion = 9.6,
             horas_jugadas = 15.3,
             fecha_lanzamiento = 2023,
-            caratula = R.drawable.mario_wonder
+            caratula = R.drawable.ic_mario_wonder
         ),
         Videojuego(
             id = 3,
@@ -36,7 +36,7 @@ object VideojuegoRepository{
             puntuacion = 6.6,
             horas_jugadas = 12.3,
             fecha_lanzamiento = 2017,
-            caratula = R.drawable.doki_doki
+            caratula = R.drawable.ic_doki_doki
         )
 
     )
