@@ -13,4 +13,5 @@ object Variables {
     val onSurfaceVariant: Color = Color(0xFF9AA3B2)
     val estadoJugandoContainer: Color = Color(0xFF11304A)
     val shapeFull: Dp = 999.dp
+    val estadoJugando: Color = Color(0xFF3DB2FF)
 }

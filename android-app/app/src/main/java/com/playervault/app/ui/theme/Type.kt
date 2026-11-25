@@ -26,7 +26,7 @@ val Roboto = FontFamily(
     roboto(FontWeight.Bold)      // 700
 )
 
-// Estilos de texto sacados de la guía de estilo de Figma (página "Guía de estilo" > "Tipografía").
+
 val Typography = Typography(
     headlineMedium = TextStyle(
         fontFamily = Roboto,
@@ -75,7 +75,6 @@ val Typography = Typography(
         fontWeight = FontWeight.SemiBold,
         fontSize = 11.sp,
         lineHeight = 16.sp,
-        // En Figma pone letterSpacing 4: se interpreta como 4 % del tamaño (11 × 0,04 ≈ 0,44)
         letterSpacing = 0.44.sp
     )
 )
