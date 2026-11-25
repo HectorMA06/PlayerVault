@@ -40,7 +40,7 @@ import com.playervault.app.ui.theme.pendiente
 fun GameCard(videojuego: Videojuego, modifier: Modifier = Modifier) {
     //La tarjeta entera
     Row(
-        Modifier
+        modifier
             .width(360.dp)
             .height(102.dp)
             .background(
