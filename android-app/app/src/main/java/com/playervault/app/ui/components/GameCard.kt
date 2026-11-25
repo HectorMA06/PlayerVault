@@ -1,19 +1,17 @@
 package com.playervault.app.ui.components
 
+
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxSize
+
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
+
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -21,11 +19,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 
+
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -33,8 +33,9 @@ import com.playervault.app.R
 import com.playervault.app.data.VideojuegoRepository
 import com.playervault.app.model.Videojuego
 import com.playervault.app.ui.theme.PlayervaultTheme
+import com.playervault.app.ui.theme.Roboto
 import com.playervault.app.ui.theme.Variables
-import com.playervault.app.ui.theme.primary
+
 
 @Composable
 fun GameCard(videojuego: Videojuego, modifier: Modifier = Modifier) {
@@ -63,7 +64,8 @@ fun GameCard(videojuego: Videojuego, modifier: Modifier = Modifier) {
             Modifier
                 .width(56.dp)
                 .height(76.dp)
-                .clip(RoundedCornerShape(8.dp))
+                .clip(RoundedCornerShape(8.dp)),
+            contentScale = ContentScale.Crop
         )
 
         //Informacion del juego
@@ -76,15 +78,16 @@ fun GameCard(videojuego: Videojuego, modifier: Modifier = Modifier) {
         ) {
             //TITULO
             Text(
-                text = videojuego.titulo, style = TextStyle(
+                text = videojuego.titulo,
+                style = TextStyle(
                     fontSize = 16.sp,
                     lineHeight = 22.sp,
-                    fontFamily = FontFamily(Font(R.font.roboto)),
+                    fontFamily = Roboto,
                     fontWeight = FontWeight(600),
                     color = Variables.onSurface,
-                ), modifier = Modifier
-                    .width(264.dp)
-                    .height(22.dp)
+                ),
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis
             )
 
             //PLATAFORMA Y GENERO
@@ -92,12 +95,12 @@ fun GameCard(videojuego: Videojuego, modifier: Modifier = Modifier) {
                 text = "${videojuego.plataforma} · ${videojuego.genero}", style = TextStyle(
                     fontSize = 14.sp,
                     lineHeight = 20.sp,
-                    fontFamily = FontFamily(Font(R.font.roboto)),
+                    fontFamily = Roboto,
                     fontWeight = FontWeight(400),
                     color = Variables.onSurfaceVariant,
-                ), modifier = Modifier
-                    .width(264.dp)
-                    .height(20.dp)
+                ),
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis
             )
 
             Row(
@@ -107,16 +110,13 @@ fun GameCard(videojuego: Videojuego, modifier: Modifier = Modifier) {
                 Row(
                     horizontalArrangement = Arrangement.spacedBy(12.dp, Alignment.Start),
                     verticalAlignment = Alignment.CenterVertically,
-                    modifier = Modifier
-                        .width(208.dp)
-                        .height(24.dp)
+                    modifier = Modifier.height(24.dp)
                 ) {
                     //Estado
                     Row(
                         horizontalArrangement = Arrangement.spacedBy(6.dp, Alignment.Start),
                         verticalAlignment = Alignment.CenterVertically,
                         modifier = Modifier
-                            .width(88.dp)
                             .height(24.dp)
                             .background(
                                 color = Variables.estadoJugandoContainer,
@@ -127,7 +127,6 @@ fun GameCard(videojuego: Videojuego, modifier: Modifier = Modifier) {
                         Image(
                             painter = painterResource(id = R.drawable.ic_dot),
                             contentDescription = "estado",
-                            contentScale = ContentScale.None,
                             modifier = Modifier
                                 .padding(1.dp)
                                 .width(8.dp)
@@ -135,26 +134,22 @@ fun GameCard(videojuego: Videojuego, modifier: Modifier = Modifier) {
                                 .background(color = Variables.estadoJugando)
                         )
                         Text(
-                            text = videojuego.estado.name, style = TextStyle(
+                            text = videojuego.estado.texto, style = TextStyle(
                                 fontSize = 11.sp, //Tamaño de texto
                                 lineHeight = 16.sp,
-                                fontFamily = FontFamily(Font(R.font.roboto)),
+                                fontFamily = Roboto,
                                 fontWeight = FontWeight(600),
                                 color = Variables.estadoJugando,
                                 letterSpacing = 0.44.sp,
-                            ), modifier = Modifier
-                                .width(54.dp)
-                                .height(16.dp)
-
+                            ),
+                            maxLines = 1
                         )
                     }
 
                     Row(
                         horizontalArrangement = Arrangement.spacedBy(4.dp, Alignment.Start),
                         verticalAlignment = Alignment.CenterVertically,
-                        modifier = Modifier
-                            .width(38.dp)
-                            .height(20.dp)
+                        modifier = Modifier.height(20.dp)
                     ) {
                         //Puntuación
                         Image(
@@ -165,26 +160,22 @@ fun GameCard(videojuego: Videojuego, modifier: Modifier = Modifier) {
                                 .height(14.dp)
                         )
                         Text(
-                            text = videojuego.puntuacion.toString(),
+                            text = videojuego.puntuacion?.toString() ?: "–",
                             style = TextStyle(
                                 fontSize = 14.sp,
                                 lineHeight = 20.sp,
-                                fontFamily = FontFamily(Font(R.font.roboto)),
+                                fontFamily = Roboto,
                                 fontWeight = FontWeight(500),
                                 color = Variables.onSurface,
                             ),
-                            modifier = Modifier
-                                .width(20.dp)
-                                .height(20.dp)
+                            maxLines = 1
                         )
                     }
 
                     Row(
                         horizontalArrangement = Arrangement.spacedBy(4.dp, Alignment.Start),
                         verticalAlignment = Alignment.CenterVertically,
-                        modifier = Modifier
-                            .width(58.dp)
-                            .height(20.dp)
+                        modifier = Modifier.height(20.dp)
                     ) {
                         //Tiempo jugado
                         Image(
@@ -193,14 +184,13 @@ fun GameCard(videojuego: Videojuego, modifier: Modifier = Modifier) {
                             modifier = Modifier
                                 .width(14.dp)
                                 .height(14.dp),
-                            contentScale = ContentScale.None
                         )
                         Text(
-                            text = videojuego.horas_jugadas.toString(),
+                            text = "${videojuego.horas_jugadas} h",
                             style = TextStyle(
                                 fontSize = 14.sp,
                                 lineHeight = 20.sp,
-                                fontFamily = FontFamily(Font(R.font.roboto)),
+                                fontFamily = Roboto,
                                 fontWeight = FontWeight(500),
                                 color = Variables.onSurface,
                             )
