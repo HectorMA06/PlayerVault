@@ -17,6 +17,7 @@ object Variables {
     val onPrimary: Color = Color(0xFFFFFFFF)
     val outline: Color = Color(0xFF3A4150)
 
+
     val estados = mapOf(
         "PENDIENTE" to pendiente,
         "JUGANDO" to jugando,
