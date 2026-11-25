@@ -17,9 +17,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.ColorFilter
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -57,16 +55,7 @@ fun GameCard(videojuego: Videojuego, modifier: Modifier = Modifier) {
         verticalAlignment = Alignment.CenterVertically,
     ) {
         //CARATULA
-        Image(
-            painter = painterResource(videojuego.caratula ?: R.drawable.ic_launcher_background),
-            contentDescription = "Imagen del videojuego",
-            Modifier
-                .width(56.dp)
-                .height(76.dp)
-                .clip(RoundedCornerShape(8.dp)),
-            contentScale = ContentScale.Crop
-        )
-
+        GameCover(videojuego)
         //Informacion del juego
         Column(
             verticalArrangement = Arrangement.spacedBy(6.dp, Alignment.Top),
