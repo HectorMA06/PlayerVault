@@ -4,14 +4,12 @@ package com.playervault.app.ui.components
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -32,8 +30,8 @@ import com.playervault.app.model.Videojuego
 import com.playervault.app.ui.theme.PlayervaultTheme
 import com.playervault.app.ui.theme.Roboto
 import com.playervault.app.ui.theme.Variables
-import com.playervault.app.ui.theme.Variables.estadosContainer
 import com.playervault.app.ui.theme.pendiente
+import com.playervault.app.ui.theme.primary
 
 
 @Composable
@@ -103,31 +101,7 @@ fun GameCard(videojuego: Videojuego, modifier: Modifier = Modifier) {
                     modifier = Modifier.height(24.dp)
                 ) {
                     //Estado
-                    Row(
-                        horizontalArrangement = Arrangement.spacedBy(6.dp, Alignment.Start),
-                        verticalAlignment = Alignment.CenterVertically,
-                        modifier = Modifier
-                            .height(24.dp)
-                            .background(
-                                color = Variables.estadosContainer[videojuego.estado.toString()] ?: Color.Gray,
-                                shape = RoundedCornerShape(size = Variables.shapeFull)
-                            )
-                            .padding(start = 10.dp, top = 4.dp, end = 10.dp, bottom = 4.dp)
-                    ) {
-                        //Punto de estado
-                        StatusChip(videojuego)
-                        Text(
-                            text = videojuego.estado.texto, style = TextStyle(
-                                fontSize = 11.sp, //Tamaño de texto
-                                lineHeight = 16.sp,
-                                fontFamily = Roboto,
-                                fontWeight = FontWeight(600),
-                                color = Variables.estados[videojuego.estado.toString()] ?: Color.Gray,
-                                letterSpacing = 0.44.sp,
-                            ),
-                            maxLines = 1
-                        )
-                    }
+                    StatusChip(videojuego)
 
                     Row(
                         horizontalArrangement = Arrangement.spacedBy(4.dp, Alignment.Start),
@@ -138,7 +112,7 @@ fun GameCard(videojuego: Videojuego, modifier: Modifier = Modifier) {
                         Image(
                             painter = painterResource(R.drawable.ic_rating),
                             contentDescription = "Icono de rating de videojuego",
-                            colorFilter = ColorFilter.tint(pendiente),
+                            colorFilter = ColorFilter.tint(primary),
                             modifier = Modifier.size(14.dp)
                         )
                         Text(
