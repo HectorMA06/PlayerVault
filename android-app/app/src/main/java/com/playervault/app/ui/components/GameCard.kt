@@ -17,6 +17,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
@@ -31,6 +32,7 @@ import com.playervault.app.model.Videojuego
 import com.playervault.app.ui.theme.PlayervaultTheme
 import com.playervault.app.ui.theme.Roboto
 import com.playervault.app.ui.theme.Variables
+import com.playervault.app.ui.theme.Variables.estadosContainer
 import com.playervault.app.ui.theme.pendiente
 
 
@@ -107,24 +109,20 @@ fun GameCard(videojuego: Videojuego, modifier: Modifier = Modifier) {
                         modifier = Modifier
                             .height(24.dp)
                             .background(
-                                color = Variables.estadoJugandoContainer,
+                                color = Variables.estadosContainer[videojuego.estado.toString()] ?: Color.Gray,
                                 shape = RoundedCornerShape(size = Variables.shapeFull)
                             )
                             .padding(start = 10.dp, top = 4.dp, end = 10.dp, bottom = 4.dp)
                     ) {
                         //Punto de estado
-                        Box(
-                            modifier = Modifier
-                                .size(8.dp)
-                                .background(color = Variables.estadoJugando, shape = CircleShape)
-                        )
+                        StatusChip(videojuego)
                         Text(
                             text = videojuego.estado.texto, style = TextStyle(
                                 fontSize = 11.sp, //Tamaño de texto
                                 lineHeight = 16.sp,
                                 fontFamily = Roboto,
                                 fontWeight = FontWeight(600),
-                                color = Variables.estadoJugando,
+                                color = Variables.estados[videojuego.estado.toString()] ?: Color.Gray,
                                 letterSpacing = 0.44.sp,
                             ),
                             maxLines = 1
@@ -192,7 +190,7 @@ fun GameCard(videojuego: Videojuego, modifier: Modifier = Modifier) {
 @Composable
 private fun GameCardPrev() {
     PlayervaultTheme {
-        GameCard(VideojuegoRepository.videojuegos[2])
+        GameCard(VideojuegoRepository.videojuegos[1])
     }
 
 }
