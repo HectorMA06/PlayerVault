@@ -4,26 +4,24 @@ package com.playervault.app.ui.components
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.layout.ContentScale
-
-
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.Font
-import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
@@ -35,6 +33,7 @@ import com.playervault.app.model.Videojuego
 import com.playervault.app.ui.theme.PlayervaultTheme
 import com.playervault.app.ui.theme.Roboto
 import com.playervault.app.ui.theme.Variables
+import com.playervault.app.ui.theme.pendiente
 
 
 @Composable
@@ -124,14 +123,11 @@ fun GameCard(videojuego: Videojuego, modifier: Modifier = Modifier) {
                             )
                             .padding(start = 10.dp, top = 4.dp, end = 10.dp, bottom = 4.dp)
                     ) {
-                        Image(
-                            painter = painterResource(id = R.drawable.ic_dot),
-                            contentDescription = "estado",
+                        //Punto de estado
+                        Box(
                             modifier = Modifier
-                                .padding(1.dp)
-                                .width(8.dp)
-                                .height(8.dp)
-                                .background(color = Variables.estadoJugando)
+                                .size(8.dp)
+                                .background(color = Variables.estadoJugando, shape = CircleShape)
                         )
                         Text(
                             text = videojuego.estado.texto, style = TextStyle(
@@ -155,9 +151,8 @@ fun GameCard(videojuego: Videojuego, modifier: Modifier = Modifier) {
                         Image(
                             painter = painterResource(R.drawable.ic_rating),
                             contentDescription = "Icono de rating de videojuego",
-                            modifier = Modifier
-                                .width(14.dp)
-                                .height(14.dp)
+                            colorFilter = ColorFilter.tint(pendiente),
+                            modifier = Modifier.size(14.dp)
                         )
                         Text(
                             text = videojuego.puntuacion?.toString() ?: "–",
@@ -181,9 +176,8 @@ fun GameCard(videojuego: Videojuego, modifier: Modifier = Modifier) {
                         Image(
                             painter = painterResource(R.drawable.ic_time),
                             contentDescription = "Icono de reloj",
-                            modifier = Modifier
-                                .width(14.dp)
-                                .height(14.dp),
+                            colorFilter = ColorFilter.tint(Variables.onSurfaceVariant),
+                            modifier = Modifier.size(14.dp)
                         )
                         Text(
                             text = "${videojuego.horas_jugadas} h",
@@ -209,7 +203,7 @@ fun GameCard(videojuego: Videojuego, modifier: Modifier = Modifier) {
 @Composable
 private fun GameCardPrev() {
     PlayervaultTheme {
-        GameCard(VideojuegoRepository.videojuegos[0])
+        GameCard(VideojuegoRepository.videojuegos[2])
     }
 
 }
