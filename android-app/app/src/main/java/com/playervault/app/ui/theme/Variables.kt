@@ -15,6 +15,8 @@ object Variables {
     val shapeFull: Dp = 999.dp
     val primary: Color = Color(0xFF7C5CFF)
     val onPrimary: Color = Color(0xFFFFFFFF)
+    val surface: Color = Color(0xFF171A21)
+    val shapeMedium: Dp = 12.dp
     val outline: Color = Color(0xFF3A4150)
 
 
