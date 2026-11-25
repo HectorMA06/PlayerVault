@@ -13,6 +13,8 @@ object Variables {
     val onSurfaceVariant: Color = Color(0xFF9AA3B2)
     val estadoJugandoContainer: Color = Color(0xFF11304A)
     val shapeFull: Dp = 999.dp
+    val primary:Color = Color(0xFF7C5CFF)
+    val onPrimary: Color = Color(0xFFFFFFFF)
     val estados = mapOf(
         "PENDIENTE" to pendiente,
         "JUGANDO" to jugando,

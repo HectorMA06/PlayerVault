@@ -164,7 +164,7 @@ fun GameCard(videojuego: Videojuego, modifier: Modifier = Modifier) {
 @Composable
 private fun GameCardPrev() {
     PlayervaultTheme {
-        GameCard(VideojuegoRepository.videojuegos[1])
+        GameCard(VideojuegoRepository.videojuegos[2])
     }
 
 }
