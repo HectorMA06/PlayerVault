@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
@@ -43,8 +44,7 @@ fun IniciarSesion(modifier: Modifier = Modifier) {
         verticalArrangement = Arrangement.spacedBy(0.dp, Alignment.Top),
         horizontalAlignment = Alignment.Start,
         modifier = modifier
-            .width(360.dp)
-            .height(800.dp)
+            .fillMaxSize()
             .background(color = background)
     ) {
         //Status Bar
