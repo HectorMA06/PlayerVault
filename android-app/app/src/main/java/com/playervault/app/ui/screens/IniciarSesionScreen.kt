@@ -132,6 +132,7 @@ fun IniciarSesion(modifier: Modifier = Modifier) {
             titulo = "Contraseña",
             valor = password,
             onValorChange = {password = it},
+            esContrasena = true,
             modifier = Modifier
                 .width(312.dp)
                 .align(Alignment.CenterHorizontally)
