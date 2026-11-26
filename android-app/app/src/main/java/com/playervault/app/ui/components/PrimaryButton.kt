@@ -28,7 +28,7 @@ fun PrimaryButton(text: String, onClick: () -> Unit,modifier: Modifier = Modifie
     ) {
         Button(
             onClick = onClick,
-            modifier = modifier.height(48.dp),
+            modifier = modifier,
             colors = ButtonDefaults.buttonColors(
                 containerColor = Variables.primary,
                 contentColor = Variables.onPrimary

@@ -25,7 +25,7 @@ fun CampoTexto(
     OutlinedTextField(
         value = valor,
         onValueChange = onValorChange,
-        modifier = modifier.fillMaxWidth(),
+        modifier = modifier,
         label = { Text(text = titulo) },
         singleLine = true,
         shape = RoundedCornerShape(Variables.shapeMedium),

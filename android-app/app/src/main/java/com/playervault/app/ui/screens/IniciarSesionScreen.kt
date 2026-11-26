@@ -1,5 +1,6 @@
 package com.playervault.app.ui.screens
 
+import android.widget.Space
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -7,6 +8,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
@@ -29,6 +31,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.playervault.app.R
 import com.playervault.app.ui.components.CampoTexto
+import com.playervault.app.ui.components.PrimaryButton
 import com.playervault.app.ui.theme.Roboto
 import com.playervault.app.ui.theme.Variables
 import com.playervault.app.ui.theme.background
@@ -39,6 +42,7 @@ import com.playervault.app.ui.theme.outline
 @Composable
 fun IniciarSesion(modifier: Modifier = Modifier) {
     var texto by remember { mutableStateOf("") }
+    var password by remember {mutableStateOf("")}
     //Iniciar sesion
     Column(
         verticalArrangement = Arrangement.spacedBy(0.dp, Alignment.Top),
@@ -101,6 +105,7 @@ fun IniciarSesion(modifier: Modifier = Modifier) {
                     .width(145.dp)
                     .height(36.dp)
             )
+            //Eslogan
             Text(
                 text = stringResource(R.string.eslogan),
                 style = TextStyle(
@@ -116,18 +121,83 @@ fun IniciarSesion(modifier: Modifier = Modifier) {
                     .height(48.dp)
             )
         }
-
+        //Email campo texto
         CampoTexto(
             titulo = "Email",
             valor = texto,
             onValorChange = {texto = it},
             modifier = Modifier
+                .fillMaxWidth()
                 .border(width = 1.dp, color = outline, shape = RoundedCornerShape(size = Variables.shapeMedium))
             .width(312.dp)
             .height(60.dp)
             .background(color = Variables.surface, shape = RoundedCornerShape(size = Variables.shapeMedium))
-            .padding(start = 16.dp, end = 12.dp))
+            .padding(start = 16.dp, end = 12.dp)
+        )
+        //Contraseña
+        CampoTexto(
+            titulo = "Contraseña",
+            valor = password,
+            onValorChange = {password = it},
+            modifier = Modifier
+                .fillMaxWidth()
+                .border(width = 1.dp, color = Variables.outline, shape = RoundedCornerShape(size = Variables.shapeMedium))
+            .width(312.dp)
+            .height(60.dp)
+            .background(color = Variables.surface, shape = RoundedCornerShape(size = Variables.shapeMedium))
+            .padding(start = 16.dp, end = 12.dp)
+        )
+        Spacer(
+            modifier = Modifier
+                .width(312.dp)
+                .height(188.dp)
+        )
+        PrimaryButton(
+            text = "Iniciar sesión",
+            onClick = {},
+            modifier = Modifier
+                .width(312.dp)
+                .height(48.dp)
+                .background(color = Variables.primary, shape = RoundedCornerShape(size = Variables.shapeFull))
+                .padding(start = 24.dp, end = 24.dp)
+        )
+        
+        Row(
+            horizontalArrangement = Arrangement.spacedBy(4.dp, Alignment.CenterHorizontally),
+            verticalAlignment = Alignment.Top,
+            modifier = Modifier
+                .width(312.dp)
+                .height(20.dp)
+        ) {
+            Text(
+                text = "¿No tienes cuenta?",
 
+                style = TextStyle(
+                    fontSize = 14.sp,
+                    lineHeight = 20.sp,
+                    fontFamily = Roboto,
+                    fontWeight = FontWeight(400),
+                    color = Variables.onSurfaceVariant,
+                ),
+                modifier = Modifier
+                    .width(119.dp)
+                    .height(20.dp)
+            )
+
+            Text(
+                text = "Regístrate",
+                modifier = Modifier
+                    .width(65.dp)
+                    .height(20.dp),
+                style = TextStyle(
+                    fontSize = 14.sp,
+                    lineHeight = 20.sp,
+                    fontFamily = Roboto,
+                    fontWeight = FontWeight(500),
+                    color = Variables.primary,
+                )
+            )
+        }
     }
 }
 
