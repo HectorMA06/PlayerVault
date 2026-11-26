@@ -2,16 +2,13 @@ package com.playervault.app.ui.screens
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -36,7 +33,6 @@ import com.playervault.app.ui.theme.Variables
 import com.playervault.app.ui.theme.background
 import com.playervault.app.ui.theme.onSurface
 import com.playervault.app.ui.theme.onSurfaceVariant
-import com.playervault.app.ui.theme.outline
 
 @Composable
 fun IniciarSesion(modifier: Modifier = Modifier) {
@@ -128,9 +124,7 @@ fun IniciarSesion(modifier: Modifier = Modifier) {
             valor = texto,
             onValorChange = {texto = it},
             modifier = Modifier
-            .width(312.dp)
-            .height(60.dp)
-            .padding(start = 16.dp, end = 12.dp)
+                .width(312.dp)
                 .align(Alignment.CenterHorizontally)
         )
         //Contraseña
@@ -139,25 +133,17 @@ fun IniciarSesion(modifier: Modifier = Modifier) {
             valor = password,
             onValorChange = {password = it},
             modifier = Modifier
-            .width(312.dp)
-            .height(60.dp)
-            .padding(start = 16.dp, end = 12.dp)
-                .align(Alignment.CenterHorizontally)
-        )
-        Spacer(
-            modifier = Modifier
                 .width(312.dp)
-                .height(188.dp)
                 .align(Alignment.CenterHorizontally)
         )
+
+        Spacer(modifier = Modifier.weight(1f))
         PrimaryButton(
             text = "Iniciar sesión",
             onClick = {},
             modifier = Modifier
                 .width(312.dp)
                 .height(48.dp)
-                .background(color = Variables.primary, shape = RoundedCornerShape(size = Variables.shapeFull))
-                .padding(start = 24.dp, end = 24.dp)
                 .align(Alignment.CenterHorizontally)
         )
         
@@ -165,8 +151,8 @@ fun IniciarSesion(modifier: Modifier = Modifier) {
             horizontalArrangement = Arrangement.spacedBy(4.dp, Alignment.CenterHorizontally),
             verticalAlignment = Alignment.Top,
             modifier = Modifier
+                .padding(top = 16.dp)
                 .width(312.dp)
-                .height(20.dp)
                 .align(Alignment.CenterHorizontally)
         ) {
             Text(
@@ -179,16 +165,10 @@ fun IniciarSesion(modifier: Modifier = Modifier) {
                     fontWeight = FontWeight(400),
                     color = Variables.onSurfaceVariant,
                 ),
-                modifier = Modifier
-                    .width(119.dp)
-                    .height(20.dp)
             )
 
             Text(
                 text = "Regístrate",
-                modifier = Modifier
-                    .width(65.dp)
-                    .height(20.dp),
                 style = TextStyle(
                     fontSize = 14.sp,
                     lineHeight = 20.sp,
@@ -198,6 +178,7 @@ fun IniciarSesion(modifier: Modifier = Modifier) {
                 )
             )
         }
+        Spacer(modifier = Modifier.height(24.dp))
     }
 }
 
