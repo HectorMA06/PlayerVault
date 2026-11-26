@@ -28,7 +28,7 @@ fun DangerButton(text: String, onClick: () -> Unit,modifier: Modifier = Modifier
     ) {
         Button(
             onClick = onClick,
-            modifier = modifier.height(48.dp),
+            modifier = modifier,
             border = BorderStroke(width = 1.dp ,color = error),
             colors = ButtonDefaults.buttonColors(
                 containerColor = Color.Transparent,

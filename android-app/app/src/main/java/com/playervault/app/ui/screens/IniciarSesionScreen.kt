@@ -128,12 +128,10 @@ fun IniciarSesion(modifier: Modifier = Modifier) {
             valor = texto,
             onValorChange = {texto = it},
             modifier = Modifier
-                .fillMaxWidth()
-                .border(width = 1.dp, color = outline, shape = RoundedCornerShape(size = Variables.shapeMedium))
             .width(312.dp)
             .height(60.dp)
-            .background(color = Variables.surface, shape = RoundedCornerShape(size = Variables.shapeMedium))
             .padding(start = 16.dp, end = 12.dp)
+                .align(Alignment.CenterHorizontally)
         )
         //Contraseña
         CampoTexto(
@@ -141,12 +139,10 @@ fun IniciarSesion(modifier: Modifier = Modifier) {
             valor = password,
             onValorChange = {password = it},
             modifier = Modifier
-                .fillMaxWidth()
-                .border(width = 1.dp, color = Variables.outline, shape = RoundedCornerShape(size = Variables.shapeMedium))
             .width(312.dp)
             .height(60.dp)
-            .background(color = Variables.surface, shape = RoundedCornerShape(size = Variables.shapeMedium))
             .padding(start = 16.dp, end = 12.dp)
+                .align(Alignment.CenterHorizontally)
         )
         Spacer(
             modifier = Modifier

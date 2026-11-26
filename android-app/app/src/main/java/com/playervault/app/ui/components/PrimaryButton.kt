@@ -24,7 +24,7 @@ import com.playervault.app.ui.theme.Variables
 fun PrimaryButton(text: String, onClick: () -> Unit,modifier: Modifier = Modifier) {
     Button(
         onClick = onClick,
-        modifier = modifier.height(48.dp),
+        modifier = modifier,
         colors = ButtonDefaults.buttonColors(
             containerColor = Variables.primary,
             contentColor = Variables.onPrimary

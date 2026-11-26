@@ -22,7 +22,7 @@ import com.playervault.app.ui.theme.Variables
 fun SecundaryButton(text: String, onClick: () -> Unit,modifier: Modifier = Modifier) {
     Button(
         onClick = onClick,
-        modifier = modifier.height(48.dp),
+        modifier = modifier,
         border = BorderStroke(width = 1.dp ,color = Variables.outline),
         colors = ButtonDefaults.buttonColors(
             containerColor = Color.Transparent,
