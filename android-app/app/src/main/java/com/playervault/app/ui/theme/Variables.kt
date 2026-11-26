@@ -5,6 +5,8 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 
 object Variables {
+    val onPrimaryContainer: Color = Color(0xFFCFC2FF)
+    val primaryContainer: Color = Color(0xFF2B2257)
     val surfaceContainer: Color = Color(0xFF1E222B)
     val shapeLarge: Dp = 16.dp
     val spacingM: Dp = 12.dp
@@ -18,6 +20,7 @@ object Variables {
     val surface: Color = Color(0xFF171A21)
     val shapeMedium: Dp = 12.dp
     val outline: Color = Color(0xFF3A4150)
+    val shapeSmall: Dp = 8.dp
 
 
     val estados = mapOf(
