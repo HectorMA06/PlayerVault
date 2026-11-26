@@ -20,26 +20,21 @@ import com.playervault.app.ui.theme.Variables
 
 @Composable
 fun SecundaryButton(text: String, onClick: () -> Unit,modifier: Modifier = Modifier) {
-    Row(
-        horizontalArrangement = Arrangement.spacedBy(8.dp, Alignment.CenterHorizontally),
-        verticalAlignment = Alignment.CenterVertically,
-    ) {
-        Button(
-            onClick = onClick,
-            modifier = modifier.height(48.dp),
-            border = BorderStroke(width = 1.dp ,color = Variables.outline),
-            colors = ButtonDefaults.buttonColors(
-                containerColor = Color.Transparent,
-                contentColor = Variables.primary
-            ),
-            shape = RoundedCornerShape(Variables.shapeFull),
-            contentPadding = PaddingValues(horizontal = 24.dp),
+    Button(
+        onClick = onClick,
+        modifier = modifier.height(48.dp),
+        border = BorderStroke(width = 1.dp ,color = Variables.outline),
+        colors = ButtonDefaults.buttonColors(
+            containerColor = Color.Transparent,
+            contentColor = Variables.primary
+        ),
+        shape = RoundedCornerShape(Variables.shapeFull),
+        contentPadding = PaddingValues(horizontal = 24.dp),
 
-        ) {
-            Text(
-                text = text
-            )
-        }
+    ) {
+        Text(
+            text = text
+        )
     }
 }
 

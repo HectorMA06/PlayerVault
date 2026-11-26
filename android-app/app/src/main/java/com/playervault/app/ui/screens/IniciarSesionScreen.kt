@@ -1,6 +1,5 @@
 package com.playervault.app.ui.screens
 
-import android.widget.Space
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -70,6 +69,7 @@ fun IniciarSesion(modifier: Modifier = Modifier) {
             modifier = modifier
                 .width(10.dp)
                 .height(56.dp)
+                .align(Alignment.CenterHorizontally)
         ) {
 
         }
@@ -81,6 +81,7 @@ fun IniciarSesion(modifier: Modifier = Modifier) {
                 .width(312.dp)
                 .height(220.dp)
                 .padding(bottom = 24.dp)
+                .align(Alignment.CenterHorizontally)
         ) {
             //LOGO
             Image(
@@ -151,6 +152,7 @@ fun IniciarSesion(modifier: Modifier = Modifier) {
             modifier = Modifier
                 .width(312.dp)
                 .height(188.dp)
+                .align(Alignment.CenterHorizontally)
         )
         PrimaryButton(
             text = "Iniciar sesión",
@@ -160,6 +162,7 @@ fun IniciarSesion(modifier: Modifier = Modifier) {
                 .height(48.dp)
                 .background(color = Variables.primary, shape = RoundedCornerShape(size = Variables.shapeFull))
                 .padding(start = 24.dp, end = 24.dp)
+                .align(Alignment.CenterHorizontally)
         )
         
         Row(
@@ -168,6 +171,7 @@ fun IniciarSesion(modifier: Modifier = Modifier) {
             modifier = Modifier
                 .width(312.dp)
                 .height(20.dp)
+                .align(Alignment.CenterHorizontally)
         ) {
             Text(
                 text = "¿No tienes cuenta?",

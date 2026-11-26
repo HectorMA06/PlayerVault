@@ -22,25 +22,20 @@ import com.playervault.app.ui.theme.Variables
 
 @Composable
 fun PrimaryButton(text: String, onClick: () -> Unit,modifier: Modifier = Modifier) {
-    Row(
-        horizontalArrangement = Arrangement.spacedBy(8.dp, Alignment.CenterHorizontally),
-        verticalAlignment = Alignment.CenterVertically,
-    ) {
-        Button(
-            onClick = onClick,
-            modifier = modifier,
-            colors = ButtonDefaults.buttonColors(
-                containerColor = Variables.primary,
-                contentColor = Variables.onPrimary
-            ),
-            shape = RoundedCornerShape(Variables.shapeFull),
-            contentPadding = PaddingValues(horizontal = 24.dp)
+    Button(
+        onClick = onClick,
+        modifier = modifier.height(48.dp),
+        colors = ButtonDefaults.buttonColors(
+            containerColor = Variables.primary,
+            contentColor = Variables.onPrimary
+        ),
+        shape = RoundedCornerShape(Variables.shapeFull),
+        contentPadding = PaddingValues(horizontal = 24.dp)
 
-        ) {
-            Text(
-                text = text
-            )
-        }
+    ) {
+        Text(
+            text = text
+        )
     }
 }
 
