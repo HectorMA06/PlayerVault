@@ -5,6 +5,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 
 object Variables {
+    val outlineVariant: Color = Color(0xFF2A2F3A)
     val onPrimaryContainer: Color = Color(0xFFCFC2FF)
     val primaryContainer: Color = Color(0xFF2B2257)
     val surfaceContainer: Color = Color(0xFF1E222B)

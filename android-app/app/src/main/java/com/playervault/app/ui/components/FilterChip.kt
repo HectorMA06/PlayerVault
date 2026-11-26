@@ -41,6 +41,8 @@ fun FilterChip(text: String,
                activado: Boolean,
                onClick: () -> Unit,
                modifier: Modifier = Modifier) {
+
+    //Comprobaciones si está activado
     val fondo = if (activado) Variables.primaryContainer else Color.Transparent
     val colorTexto = if (activado) Variables.onPrimaryContainer else Variables.onSurfaceVariant
     val borde = if (activado) null else BorderStroke(1.dp, Variables.outline)
@@ -54,6 +56,7 @@ fun FilterChip(text: String,
             contentColor = colorTexto
         ),
         border = borde,
+        //Cambia el padding dependiendo si está activado o no
         contentPadding = PaddingValues(
             start = if (activado) 10.dp else 12.dp,
             end = if (activado) 14.dp else 12.dp
